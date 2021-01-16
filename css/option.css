@@ -1,0 +1,179 @@
+/* --- Grid --- */
+#container {
+    display: grid;
+    width: 80%;
+    height: 90vh;
+    margin: 0 auto;
+    grid-template-rows: 80px  30px 100px 30px auto;
+    grid-template-columns: 1fr 3fr 3fr;
+    row-gap: 20px;
+    column-gap: 10px;
+}
+
+#container > div {
+    border: 1px solid #ccc;
+}
+
+#header {
+    grid-row: 1;
+    grid-column: 1 / 4;
+}
+
+#sidebar {
+    grid-row: 2 / 6;
+    grid-column: 1;
+}
+
+#form {
+    grid-row: 3;
+    grid-column: 2;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#sample {
+    grid-row: 3;
+    grid-column: 3;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#filterList {
+    grid-row: 5;
+    grid-column: 2 / 4;
+    overflow-y: scroll;
+}
+
+#title_form {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#title_sample {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+#title_filterList {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+#title_contact {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#contact {
+    grid-row: 3 / 6;
+    grid-column: 2 / 4;
+    padding: 10px;
+    font-size: 1.3em;
+    box-sizing: border-box;
+}
+
+#title_form, #title_sample, #title_filterList, #title_contact {
+    font-size: 2.0em;
+}
+
+/* --- Grid End --- */
+
+/* sidebar */
+#sidebar > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    font-size: 1.5em;
+}
+/* */
+
+#header img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* form */
+
+.select {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    display: flex;
+}
+
+select {
+    width: 49%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: solid 1px #ccc;
+    font-size: 1.3em;
+}
+
+input[type="text"] {
+    flex: 4;
+    padding: 10px;
+    font-size: 1.3em;
+    box-sizing: border-box;
+    border: solid 1px #ccc;
+    border-right: 0;
+}
+
+input[type="button"] {
+    flex: 1;
+    border: 0;
+    box-shadow: 0;
+    background-color: #0096fa;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+input[type="button"]:hover {
+    background-color: #0086e0;
+    transition: all 0.5s;
+}
+
+/* form End */
+
+/* filterList */
+
+#filterListTable {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3em;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+}
+
+.button_remove {
+    width: 100%;
+    height: 100%;
+    background-color: #0096fa;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+}
+
+.button_remove:hover {
+    background-color: #0086e0;
+    transition: all 0.5s;
+}
+/* filterList End */
+
+form * {
+    outline: none;
+}
+
+.sampleMatchText {
+    color: red;
+}
+

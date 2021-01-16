@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/popup.css">
+    <title>トレンドフィルター</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/icon/header.png" alt="トレンドフィルター">
+            <a href="options.html" target="_blank"><img src="/icon/setting.png" alt="設定"></a>
+        </div>
+
+        <div class="form">
+            <form name="filterForm" action="#">
+                <div class="select">
+                    <select name="type">
+                        <option value="ワード">ワード</option>
+                        <option value="カテゴリー">カテゴリー</option>
+                    </select>
+                    <select name="pattern">
+                        <option value="全体">全体からマッチ</option>
+                        <option value="先頭">先頭にマッチ</option>
+                        <option value="末尾">末尾にマッチ</option>
+                    </select>
+                </div>
+                
+                <div class="input">
+                    <input type="text" name="text" placeholder="キーワードを入力">
+                    <input type="button" name="submit" value="登録">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/popup.js" type="module"></script>
+</body>
+</html>

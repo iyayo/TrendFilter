@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/option.css">
+    <title>設定 - トレンドフィルター</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <img src="/icon/header.png" alt="">
+        </div>
+
+        <div id="sidebar">
+            <ul>
+                <a href=options.html><li>フィルター管理</li></a>
+                <a href=contact.html><li>不具合・要望など</li></a>
+            </ul>
+        </div>
+
+        <span id="title_form">フィルター登録</span>
+        <div id="form">
+            <form name="filterForm" action="#">
+                <div class="select">
+                    <select name="type">
+                        <option value="ワード">ワード</option>
+                        <option value="カテゴリー">カテゴリー</option>
+                    </select>
+                    <select name="pattern">
+                        <option value="全体">全体からマッチ</option>
+                        <option value="先頭">先頭にマッチ</option>
+                        <option value="末尾">末尾にマッチ</option>
+                    </select>
+                </div>
+                
+                <div class="input">
+                    <input type="text" name="text" placeholder="キーワードを入力">
+                    <input type="button" name="submit" value="登録">
+                </div>
+            </form>
+        </div>
+
+        <span id="title_sample">フィルター適用例</span>
+        <div id="sample">
+            キーワードを入力すると、ここに適用例が表示されます。<span class="sampleMatchText">赤文字</span> = マッチ。
+            <p id="sampleText"></p>
+        </div>
+
+
+        <span id="title_filterList">フィルターリスト</span>
+        <div id="filterList">
+            <table id="filterListTable">
+                <tr>
+                    <th style="width: 10%;">タイプ</th>
+                    <th style="width: 10%;">パターン</th>
+                    <th style="width: 60%;">キーワード</th>
+                    <th style="width: 20%;">削除</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="/js/option.js" type="module"></script>
+</body>
+
+</html>
