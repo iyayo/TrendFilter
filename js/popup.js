@@ -31,14 +31,18 @@ function addFilter (){
         regex: filterForm.text.value
     }
 
-    switch (filter.pattern) {
-        case "先頭":
-            filter.regex = "^" + filter.regex;
-            break;
-    
-        case "末尾":
-            filter.regex = filter.regex + "$";
-            break;
+    if (filter.pattern !== "正規表現"){
+        filter.regex = filter.text.replace(/[.*+?^=!:${}()|[\]\/\\]/g, '\\$&');
+
+        switch (filter.pattern) {
+            case "先頭":
+                filter.regex = "^" + filter.regex;
+                break;
+        
+            case "末尾":
+                filter.regex = filter.regex + "$";
+                break;
+        }
     }
 
     let key = nanoid();
