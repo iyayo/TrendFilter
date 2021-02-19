@@ -64,6 +64,17 @@ function hideTrend() {
             e.style.display = "none";
         }
     });
+
+    let trendSuggest = document.querySelectorAll('div[role="listbox"] > div[role="option"] > div[role="button"] > div.css-1dbjc4n.r-1j3t67a.r-9qu9m4');
+    trendSuggest.forEach(e => {
+        let trend = e.querySelectorAll("span.css-901oao.css-16my406.r-bcqeeo.r-qvutc0");
+
+        if (trend.length > 1) {
+            if ( checkWordFilter(trend[0].innerText) && e.style.display != "none") {
+                e.style.display = "none";
+            }
+        } 
+    });
 }
 
 const observer = new MutationObserver(hideTrend);
