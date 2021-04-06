@@ -1,12 +1,12 @@
 {
     "name": "トレンドフィルター for Twitter",
     "version": "1.2",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "description": "ツイッターで、登録したフィルターにマッチしたトレンドを非表示にする拡張機能です。",
     "icons" : {
       "128" : "icon/icon128.png"
     },
-    "browser_action": {
+    "action": {
       "default_icon" : {
         "32" : "icon/icon128.png"
       },
