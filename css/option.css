@@ -188,3 +188,11 @@ form * {
     color: red;
 }
 
+#changelog details > summary {
+    font-size: 1.5em;
+    outline: 0;
+}
+
+#changelog li {
+    font-size: 1.4em;
+}
