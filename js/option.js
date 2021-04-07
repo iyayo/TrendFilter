@@ -108,6 +108,10 @@ function changeSample(form) {
         case "末尾":
             sample.innerHTML = document.filterForm.text.value + "あっぷるぐーぐる"+ document.filterForm.text.value + "ついったー" + matchText;
             break;
+
+        case "正規表現":
+            sample.innerHTML = "※正規表現を選択している場合は表示されません。";
+            break;
     }
 }
 
