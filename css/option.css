@@ -72,7 +72,7 @@
 
 #contact {
     grid-row: 3 / 6;
-    grid-column: 2;
+    grid-column: 2 / 4;
     padding: 10px;
     font-size: 1.3em;
     box-sizing: border-box;
@@ -80,23 +80,24 @@
 
 #changelog {
     grid-row: 3 / 6;
-    grid-column: 2;
+    grid-column: 2 / 4;
     overflow-y: scroll;
 }
 
 #title_form, #title_sample, #title_filterList, #title_contact, #title_changelog {
     font-size: 2.0em;
+    white-space: nowrap;
 }
 
 /* --- Grid End --- */
 
 /* sidebar */
-#sidebar > ul {
+#sidebar ul {
     display: flex;
     flex-direction: column;
 }
 
-li {
+#sidebar li {
     font-size: 1.5em;
 }
 /* */
