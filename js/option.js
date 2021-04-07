@@ -24,7 +24,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import {nanoid} from './nanoid.js';
 
 function showFilterList (){
-    chrome.storage.local.get(null, function(allItem){
+    chrome.storage.local.get(null, allItem => {
         for (let key in allItem) {
             addFilterList(allItem[key].type, allItem[key].pattern, allItem[key].text, key);
         }
@@ -34,35 +34,34 @@ function showFilterList (){
 showFilterList();
 
 function addFilterList (type, pattern, text, key) {
-    let tr = document.createElement("tr");
-    let td_type = document.createElement("td");
+    const tr = document.createElement("tr");
+    const td_type = document.createElement("td");
     td_type.innerText = type;
 
-    let td_pattern = document.createElement("td");
+    const td_pattern = document.createElement("td");
     td_pattern.innerText = pattern;
 
-    let td_text = document.createElement("td");
+    const td_text = document.createElement("td");
     td_text.innerText = text;
 
-    let td_remove = document.createElement("td");
-    let button_remove = document.createElement("button");
+    const td_remove = document.createElement("td");
+    const button_remove = document.createElement("button");
     button_remove.className = "button_remove";
     button_remove.innerText = "削除";
     button_remove.dataset.key = key;
 
-    let filterListTable = document.getElementById("filterListTable");
+    const filterListTable = document.getElementById("filterListTable");
     filterListTable.appendChild(tr);
     tr.appendChild(td_type);
     tr.appendChild(td_pattern);
     tr.appendChild(td_text);
     tr.appendChild(td_remove);
     td_remove.appendChild(button_remove);
-    
 
-    button_remove.addEventListener("click", function (){
-        chrome.storage.local.remove(this.dataset.key, function(){});
+    button_remove.addEventListener("click", e => {
+        chrome.storage.local.remove(e.target.dataset.key);
 
-        this.parentNode.parentNode.remove();
+        e.target.parentNode.parentNode.remove();
     });
 }
 
@@ -88,14 +87,14 @@ function addFilter (){
         }
     }
 
-    let key = nanoid();
+    const key = nanoid();
 
     chrome.storage.local.set({[key]: filter}, addFilterList(filter.type, filter.pattern, filter.text, key));
 }
 
-function changeSample(form) {
-    let sample = document.getElementById("sampleText");
-    let matchText = "<span class=sampleMatchText>" + document.filterForm.text.value + "</span>"; 
+function changeSample() {
+    const sample = document.getElementById("sampleText");
+    const matchText = "<span class=sampleMatchText>" + document.filterForm.text.value + "</span>"; 
     switch (document.filterForm.pattern.value) {
         case "全体":
             sample.innerHTML = matchText + "あっぷるぐーぐる"+ matchText + "ついったー" + matchText;
@@ -115,11 +114,11 @@ function changeSample(form) {
     }
 }
 
-document.filterForm.submit.addEventListener("click", function(){
-    if (document.filterForm.text.value){
-        addFilter();
-        document.filterForm.text.value = "";
-    }
+document.filterForm.submit.addEventListener("click", () => {
+    if (!document.filterForm.text.value) return;
+    
+    addFilter();
+    document.filterForm.text.value = "";
 });
 
 document.filterForm.addEventListener("input", changeSample);

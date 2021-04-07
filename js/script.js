@@ -4,7 +4,7 @@ getAllFilter();
 chrome.storage.onChanged.addListener(getAllFilter);
 
 function getAllFilter() {
-    chrome.storage.local.get(null, function (allItem) {
+    chrome.storage.local.get(null, allItem => {
         filterList = allItem;
         hideTrend();
     })
@@ -15,9 +15,7 @@ function checkWordFilter(word) {
         if (filterList[key].type == "ワード") {
             let regex = new RegExp(filterList[key].regex);
     
-            if (regex.test(word)) {
-                return true;
-            }
+            if (regex.test(word)) return true;
         }
     }
 
@@ -29,9 +27,7 @@ function checkCategoryFilter(category) {
         if (filterList[key].type == "カテゴリー") {
             let regex = new RegExp(filterList[key].regex);
 
-            if (regex.test(category)) {
-                return true;
-            }
+            if (regex.test(category)) return true;
         }
     }
 

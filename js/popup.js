@@ -45,14 +45,14 @@ function addFilter (){
         }
     }
 
-    let key = nanoid();
+    const key = nanoid();
 
-    chrome.storage.local.set({[key]: filter}, function(){});
+    chrome.storage.local.set({[key]: filter});
 }
 
-document.filterForm.submit.addEventListener("click", function(){
-    if (document.filterForm.text.value){
-        addFilter();
-        document.filterForm.text.value = "";
-    }
+document.filterForm.submit.addEventListener("click", () => {
+    if (!document.filterForm.text.value) return;
+    
+    addFilter();
+    document.filterForm.text.value = "";
 });
