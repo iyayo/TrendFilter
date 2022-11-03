@@ -44,25 +44,18 @@ function addFilterList (type, pattern, text, key) {
     const td_text = document.createElement("td");
     td_text.innerText = text;
 
-    const td_remove = document.createElement("td");
-    const button_remove = document.createElement("button");
-    button_remove.className = "button_remove";
-    button_remove.innerText = "削除";
-    button_remove.dataset.key = key;
+    td_type.className, td_pattern.className, td_text.className = "align-middle";
+
+    const td_checkbox = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "form-check-input";
+    checkbox.value = key;
 
     const filterListTable = document.getElementById("filterListTable");
-    filterListTable.appendChild(tr);
-    tr.appendChild(td_type);
-    tr.appendChild(td_pattern);
-    tr.appendChild(td_text);
-    tr.appendChild(td_remove);
-    td_remove.appendChild(button_remove);
-
-    button_remove.addEventListener("click", e => {
-        chrome.storage.local.remove(e.target.dataset.key);
-
-        e.target.parentNode.parentNode.remove();
-    });
+    filterListTable.append(tr);
+    tr.append(td_type, td_pattern, td_text, td_checkbox);
+    td_checkbox.append(checkbox);
 }
 
 function addFilter (){
@@ -92,28 +85,6 @@ function addFilter (){
     chrome.storage.local.set({[key]: filter}, addFilterList(filter.type, filter.pattern, filter.text, key));
 }
 
-function changeSample() {
-    const sample = document.getElementById("sampleText");
-    const matchText = "<span class=sampleMatchText>" + document.filterForm.text.value + "</span>"; 
-    switch (document.filterForm.pattern.value) {
-        case "全体":
-            sample.innerHTML = matchText + "あっぷるぐーぐる"+ matchText + "ついったー" + matchText;
-            break;
-    
-        case "先頭":
-            sample.innerHTML = matchText + "あっぷるぐーぐる"+ document.filterForm.text.value + "ついったー" + document.filterForm.text.value;
-            break;
-
-        case "末尾":
-            sample.innerHTML = document.filterForm.text.value + "あっぷるぐーぐる"+ document.filterForm.text.value + "ついったー" + matchText;
-            break;
-
-        case "正規表現":
-            sample.innerHTML = "※正規表現を選択している場合は表示されません。";
-            break;
-    }
-}
-
 document.filterForm.submit.addEventListener("click", () => {
     if (!document.filterForm.text.value) return;
     
@@ -121,4 +92,19 @@ document.filterForm.submit.addEventListener("click", () => {
     document.filterForm.text.value = "";
 });
 
-document.filterForm.addEventListener("input", changeSample);
+const remove_selectItems = document.getElementById("remove_selectItems");
+
+remove_selectItems.addEventListener("click", removeFilter);
+
+function removeFilter() {
+    const result = window.confirm("選択したフィルターを削除しますか？");
+
+    if (!result) return;
+
+    const items = document.querySelectorAll(".form-check-input:checked");
+
+    items.forEach(element => {
+        chrome.storage.local.remove(element.value);
+        element.parentNode.parentNode.remove();
+    });
+}

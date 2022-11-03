@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/popup.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>トレンドフィルター</title>
 </head>
-<body>
+
+<body style="min-width: 350px;">
     <div class="container">
-        <div class="header">
-            <img src="/icon/header.png" alt="トレンドフィルター">
-            <a href="options.html" target="_blank" title="フィルター管理"><img src="/icon/setting.png" alt="フィルター管理"></a>
+        <div class="row mb-2">
+            <div class="col-9">
+                <img src="/icon/header.png" class="img-fluid">
+            </div>
+
+            <div class="col">
+                <a href="/html/options.html" target="_blank">
+                    <img src="/icon/setting.png" class="img-fluid">
+                </a>
+            </div>
         </div>
 
-        <div class="form">
+        <div class="mb-2">
             <form name="filterForm" action="#">
-                <div class="select">
-                    <select name="type">
-                        <option value="ワード">ワード</option>
-                        <option value="カテゴリー">カテゴリー</option>
-                    </select>
-                    <select name="pattern">
-                        <option value="全体">全体からマッチ</option>
-                        <option value="先頭">先頭にマッチ</option>
-                        <option value="末尾">末尾にマッチ</option>
-                        <option value="正規表現">正規表現</option>
-                    </select>
+                <div class="row mb-2">
+                    <div class="col ps-2 pe-1">
+                        <select class="form-select" name="type">
+                            <option value="ワード">ワード</option>
+                            <option value="カテゴリー">カテゴリー</option>
+                        </select>
+                    </div>
+
+                    <div class="col ps-1 pe-2">
+                        <select class="form-select" name="pattern">
+                            <option value="全体">全体からマッチ</option>
+                            <option value="先頭">先頭にマッチ</option>
+                            <option value="末尾">末尾にマッチ</option>
+                            <option value="正規表現">正規表現</option>
+                        </select>
+                    </div>
                 </div>
-                
-                <div class="input">
-                    <input type="text" name="text" placeholder="キーワードを入力">
-                    <input type="button" name="submit" value="登録">
+
+                <div class="row">
+                    <div class="col-8 ps-2 pe-1">
+                        <input class="form-control" type="text" name="text" placeholder="キーワードを入力">
+                    </div>
+
+                    <div class="col ps-1 pe-2">
+                        <input class="form-control btn btn-primary" type="button" name="submit" value="追加">
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+
+    <script src="/js/bootstrap.min.js"></script>
     <script src="/js/popup.js" type="module"></script>
 </body>
+
 </html>
