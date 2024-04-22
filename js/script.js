@@ -42,7 +42,7 @@ function hideTrend() {
             0 = ランキング、カテゴリ
             1 = ワード
         */
-        let trend = e.querySelectorAll("div.css-1dbjc4n.r-16y2uox.r-bnwqim > div");
+        let trend = e.querySelectorAll('div[data-testid="trend"] > div > div');
         let cate = trend[0].querySelectorAll("span");
         let category = "";
 
